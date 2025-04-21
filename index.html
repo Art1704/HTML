@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HELLO BEH HAHAHA</title>
+  <style>
+    body {
+      font-family: "Comic Sans MS", cursive, sans-serif;
+      text-align: center;
+      background-color: #fff0f5;
+      padding-top: 100px;
+    }
+    h1 {
+      font-size: 32px;
+      color: #d63384;
+    }
+    button {
+      font-size: 20px;
+      margin: 10px;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+    }
+    button:hover {
+      transform: scale(1.1);
+    }
+    .yes-btn {
+      background-color: #ff69b4;
+      color: white;
+    }
+    .no-btn {
+      background-color: #ffb6c1;
+      color: white;
+    }
+    #response {
+      font-size: 28px;
+      margin-top: 30px;
+      color: #ff1493;
+      animation: pop 0.5s ease-in-out;
+    }
+    #cat-image {
+      display: block;
+      margin: 20px auto 0 auto;
+      max-width: 300px;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease-in-out;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0.8); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Will you go on a date with me?</h1>
+  <button class="yes-btn" onclick="respond('yes')">Yes</button>
+  <button class="no-btn" onclick="respond('no')">No</button>
+
+  <!-- 🐱 Moved here -->
+  <img id="cat-image" src="" alt="" style="display: none;">
+
+  <div id="response"></div>
+
+  <script>
+    function respond(answer) {
+      const response = document.getElementById('response');
+      const catImage = document.getElementById('cat-image');
+
+      if (answer === 'yes') {
+        response.innerHTML = 'OMG TALAGA LET\'S GOOO HAHAHA';
+        catImage.src = 'https://media.tenor.com/Cse00b9Ls-4AAAAM/goobers.gif'; // happy cat
+        catImage.alt = 'Happy Cat';
+      } else {
+        response.innerHTML = 'PLEASE T-T';
+        catImage.src = 'https://cdn-useast1.kapwing.com/static/templates/crying-cat-meme-template-full-719a53dc.webp'; // sad cat
+        catImage.alt = 'Sad Cat';
+      }
+
+      catImage.style.display = 'block';
+
+      // Trigger animation
+      response.style.animation = 'none';
+      response.offsetHeight; // force reflow
+      response.style.animation = 'pop 0.5s ease-in-out';
+    }
+  </script>
+</body>
+</html>
